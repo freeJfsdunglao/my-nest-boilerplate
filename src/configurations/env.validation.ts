@@ -32,6 +32,11 @@ class EnvironmentVariables {
 	@IsNotEmpty()
 	@IsBooleanString()
 	@IsLowercase()
+	USE_CONTROLLERS: string;
+
+	@IsNotEmpty()
+	@IsBooleanString()
+	@IsLowercase()
 	USE_RABBITMQ: string;
 
 	@ValidateIf(IF_RABBITMQ_WILL_BE_USED)

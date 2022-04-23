@@ -7,3 +7,9 @@ export const ENV_FILE_PATHS_FROM_MAIN_FILE = [
 	join(BASE_DIR, './.env.dev'),
 	join(BASE_DIR, './.env.local'),
 ];
+
+export enum MicroserviceList {
+	DEFAULT = 'DEFAULT',
+}
+
+export enum MicroserviceQueueList {}

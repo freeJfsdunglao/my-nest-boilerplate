@@ -3,13 +3,19 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class ConfigurationsService {
+	private readonly TRUE = 'true';
+
 	constructor(private readonly configService: ConfigService) {}
 
 	/**
 	 * DOCUMENTATION: https://docs.nestjs.com/techniques/configuration#custom-getter-functions
 	 */
-	get isUsingRabbitMQ(): boolean {
-		return this.configService.get('USE_RABBITMQ') === 'true';
+	get willUseRabbitMQMicroservice(): boolean {
+		return this.configService.get('USE_RABBITMQ') === this.TRUE;
+	}
+
+	get willUseControllers(): boolean {
+		return this.configService.get('USE_CONTROLLERS') === this.TRUE;
 	}
 
 	get portNumber(): number {
