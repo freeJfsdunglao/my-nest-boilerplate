@@ -33,4 +33,20 @@ export class ConfigurationsService {
 	get rabbitMQListeningQueueName(): string {
 		return this.configService.get('RABBITMQ_LISTEN_TO_QUEUE_NAME');
 	}
+
+	get willUseRedisCaching(): boolean {
+		return this.configService.get('USE_REDIS') === this.TRUE;
+	}
+
+	get redisHost(): string {
+		return this.configService.get('REDIS_HOST');
+	}
+
+	get redisPort(): number {
+		return this.configService.get('REDIS_PORT');
+	}
+
+	get redisExpiry(): number {
+		return this.configService.get('REDIS_CACHE_EXPIRY_SECONDS');
+	}
 }

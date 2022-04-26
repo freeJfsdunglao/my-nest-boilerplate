@@ -12,14 +12,10 @@ import {
 	ValidatorOptions,
 } from 'class-validator';
 
-const IF_RABBITMQ_WILL_BE_USED = o => o.USE_RABBITMQ === 'true';
+import { EnvironmentType } from '../common/constants';
 
-enum EnvironmentType {
-	Development = 'development',
-	Production = 'production',
-	Test = 'test',
-	Local = 'local',
-}
+const IF_RABBITMQ_WILL_BE_USED = o => o.USE_RABBITMQ === 'true';
+const IF_REDIS_WILL_BE_USED = o => o.USE_REDIS === 'true';
 
 class EnvironmentVariables {
 	@IsNotEmpty()
@@ -48,6 +44,26 @@ class EnvironmentVariables {
 	@IsNotEmpty()
 	@IsString()
 	RABBITMQ_LISTEN_TO_QUEUE_NAME: string;
+
+	@IsNotEmpty()
+	@IsBooleanString()
+	@IsLowercase()
+	USE_REDIS: string;
+
+	@ValidateIf(IF_REDIS_WILL_BE_USED)
+	@IsNotEmpty()
+	@IsString()
+	REDIS_HOST: string;
+
+	@ValidateIf(IF_REDIS_WILL_BE_USED)
+	@IsNotEmpty()
+	@IsInt()
+	REDIS_PORT: number;
+
+	@ValidateIf(IF_REDIS_WILL_BE_USED)
+	@IsOptional()
+	@IsInt()
+	REDIS_CACHE_EXPIRY_SECONDS: number;
 }
 
 /**
