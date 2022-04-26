@@ -31,6 +31,6 @@ export class ConfigurationsService {
 	}
 
 	get rabbitMQListeningQueueName(): string {
-		return this.configService.get('RABBITMQ_QUEUE_NAME_LISTEN');
+		return this.configService.get('RABBITMQ_LISTEN_TO_QUEUE_NAME');
 	}
 }

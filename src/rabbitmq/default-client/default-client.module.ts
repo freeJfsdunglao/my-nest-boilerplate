@@ -20,8 +20,6 @@ import { MicroserviceList } from '../../common/constants';
 			useFactory: (config: ConfigurationsService) => {
 				return ClientProxyFactory.create({
 					transport: Transport.RMQ,
-					/*
-					// this is not needed if same configuration in main.ts
 					options: {
 						urls: [ config.rabbitMQURL ],
 						queue: config.rabbitMQListeningQueueName,
@@ -30,7 +28,6 @@ import { MicroserviceList } from '../../common/constants';
 							durable: false,
 						},
 					},
-					*/
 				});
 			},
 		}
